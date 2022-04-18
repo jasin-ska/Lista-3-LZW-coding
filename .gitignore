@@ -1,0 +1,6 @@
+
+*.class
+*.xml
+*.xml
+.idea/runConfigurations.xml
+.idea/uiDesigner.xml

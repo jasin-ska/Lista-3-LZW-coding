@@ -24,6 +24,13 @@ public class BitsIO {
     }
 
 
+    public static void outputIdx(int idx) {
+        // blabla
+        // code(idx) odpowiednim kodowaniem
+        // output bity tej liczby
+        System.out.println(idx);
+    }
+
     public static void output_bit(boolean bit) throws IOException {
         //counter++;
         //System.out.println("COUNTER: " + counter);
