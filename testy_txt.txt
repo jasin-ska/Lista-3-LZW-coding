@@ -1,0 +1,6 @@
+.txt (pan-tadeusz, lorem-ipsum, tajemniczy-ogrod)
+Delta, Fib, Omega, Gamma
+
+.doc 1MB
+Fib, Delta, Omega, Gamma
+
