@@ -48,22 +48,13 @@ public class BitsIO {
     }
 
     public static void outputSeq(List<Byte> seq) throws IOException {
-        /*for(int i = 0; i < seq.length(); i++) {
-            char c = seq.charAt(i);
-            outputDecodedStream.write(c);
-        }*/
         byte[] bytes = new byte[seq.size()];
         for(int i = 0; i < seq.size(); i++) bytes[i] = seq.get(i);
-        //for(byte b : bytes) outputDecodedStream.write(b);
         outputDecodedStream.write(bytes);
     }
 
 
     public static void outputIdx(int idx) throws IOException {
-        // blabla
-        // code(idx) odpowiednim kodowaniem
-        // output bity tej liczby
-        //System.out.println(idx);
         List<Boolean> bits = code.outputCoded(idx);
         for(boolean bit : bits) {
             output_bit(bit);
@@ -75,10 +66,8 @@ public class BitsIO {
     public static void output_bit(boolean bit) throws IOException {
         currByte <<= 1;
         currByte += bit ? 1 : 0;
-        //System.out.println("BIT:"+(bit ? 1 : 0));
         bitsInCurrByte++;
         if(bitsInCurrByte == 8) {
-            //System.out.print("out byte: " + currByte);
             outputByte(currByte);
             currByte = 0;
             bitsInCurrByte = 0;
@@ -95,29 +84,12 @@ public class BitsIO {
 
     public static byte[] getCodingInput(String path) throws IOException {
         input = Files.readAllBytes(Paths.get(path));
-
-        /*int howMany13 = 0;
-        for(byte b : input) if(b==13) howMany13++;
-        byte[] input2 = new byte[input.length - howMany13];
-        int itInp2 = 0;
-        for(byte b : input) {
-            if(b != 13) {
-                input2[itInp2] = b;
-                itInp2++;
-            }
-        }*/
-        //System.out.print("lzw.BitsIO input2: " + Arrays.toString(input));
-        //System.out.println();
         return input;
     }
 
     public static ArrayList<Integer> getDecodingInput(String path) throws IOException {
         input = Files.readAllBytes(Paths.get(path));
-        //System.out.println("dlugosc byte[]: " + input.length);
-        File codedFile = new File(path);
-        //System.out.println("dlugosc pliku: " + codedFile.length());
         ArrayList<Boolean> bits = new ArrayList<>(8*input.length);
-        //System.out.println("dlugosc bits przed for: " + 8*input.length);
         for(int b = 0; b < input.length; b++) {
             for (int i = 0; i < 8; i++) {
                 bits.add(((input[b] >> (7 - i)) & 1) == 1);

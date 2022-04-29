@@ -8,7 +8,6 @@ import java.util.List;
 public class OmegaCode implements Code{
     @Override
     public List<Boolean> outputCoded(int idx) {
-        //System.out.println("idx: " + idx);
         List<Boolean> bits = new ArrayList<>();
         bits.add(0, false);
         int k = idx, bitNr = 0;
@@ -22,11 +21,7 @@ public class OmegaCode implements Code{
             }
             idx = bitNr - 1;
         }
-        //System.out.print("output coded bits: ");
-        //for(boolean b : bits) System.out.print(b? 1:0);
-        //System.out.println();
-
-        return bits;
+                return bits;
     }
 
     @Override
@@ -35,50 +30,28 @@ public class OmegaCode implements Code{
         int n = 1;
         int value = 0;
         int it = 0;
-        //int bitsCounter = 0;
         for (int b = 0; b < input.size(); b++) {
 
-            //System.out.print(input.get(b));
-            //value += ((input[b] >> (7 - i)) & 1) * Math.pow(2, n - it);
             value += (input.get(b)? 1 : 0) * Math.pow(2, n - it);
-            //System.out.println("value: " + value);
             it++;
-            //bitsCounter++;
             if (it == n + 1) {
                 n = value;
                 it = 0;
-                //bitsCounter = 0;
                 value = 0;
                 boolean nextBitValue = true;
                 boolean nextNextBitValue = true;
-                /*if (i == 7 && b != input.length - 1) {
-                    nextBitValue = ((input[b + 1] >> 7) & 1) == 1;
-                    nextNextBitValue = ((input[b + 1] >> 6) & 1) == 1;
-                } else {
-                    nextBitValue = ((input[b] >> (7 - (i + 1))) & 1) == 1;
-                    if (i + 1 == 7 && b != input.length - 1) nextNextBitValue = ((input[b + 1] >> 7) & 1) == 1;
-                    else nextNextBitValue = ((input[b] >> (7 - (i + 2))) & 1) == 1;
-                }*/
                 nextBitValue = input.get(b+1) != null? input.get(b+1) : true;
                 nextNextBitValue = input.get(b+2) != null? input.get(b+2) : true;
 
                 if (!nextBitValue) {
                     indexes.add(n);
-                    //System.out.println("ADDING " + n);
-                    /*if (i == 7) {
-                        b++;
-                        i = 0;
-                    } else i++;*/
                     b++;
                     n = 1;
                     if (!nextNextBitValue) {
-                        //System.out.println("WYCHODZE i = " + b);
                         return indexes;
                     }
                 }
             }
-
-        //System.out.println();
     }
 
 

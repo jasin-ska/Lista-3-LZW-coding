@@ -31,17 +31,12 @@ public class GammaCode implements Code{
                 b++;
                 codeSize++;
             }
-            //System.out.println("codeSize: " + codeSize);
-            //System.out.println("it: " + it);
-
             while (b < input.size() && it >= 0) {
                 value += (input.get(b) ? 1 : 0) * Math.pow(2, it);
-                //System.out.println("dodaje do value " + ((input.get(b) ? 1 : 0) * Math.pow(2, it)));
                 it--;
                 b++;
             }
             if(b < input.size()) indexes.add(value);
-            //b += 2*(codeSize-1);
         }
         return indexes;
     }

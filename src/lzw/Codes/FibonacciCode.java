@@ -26,7 +26,6 @@ public class FibonacciCode implements Code{
 
     @Override
     public List<Boolean> outputCoded(int idx) {
-        //System.out.print("outing idx: " + idx);
         int index = maxFibo(idx);
         List<Boolean> bits = new ArrayList<>();
         int i = index;
@@ -55,7 +54,6 @@ public class FibonacciCode implements Code{
         for(int i = 0; i < input.size()-1; i++) {
             if(input.get(i)) {
                 idx += fibo.get(fiboIt);
-                //System.out.println("Dodaje do idx: "+fibo.get(fiboIt));
                 if(input.get(i+1)) {
                     indexes.add(idx);
                     fiboIt = -1;
