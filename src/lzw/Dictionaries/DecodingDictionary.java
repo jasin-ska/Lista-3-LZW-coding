@@ -11,11 +11,11 @@ public class DecodingDictionary implements Dictionary {
         List<Byte> list;
         list = new ArrayList<>(1);
         list.add(0, null);
-        dictionary.add(list);
+        dictionary.add(list); // skip idx 0 and 1
         dictionary.add(list);
         for (int i = 2; i <= 257; i++) {
             list = new ArrayList<>(1);
-            list.add(0, (byte)(i-2));
+            list.add(0, (byte) (i - 2));
             dictionary.add(list);
         }
     }
@@ -32,7 +32,7 @@ public class DecodingDictionary implements Dictionary {
 
     @Override
     public List<Byte> getSequenceAt(int index) { // O(1) i to w decoding jest
-        if(index < 0 || index >= dictionary.size()) return null;
+        if (index < 0 || index >= dictionary.size()) return null;
         return dictionary.get(index);
     }
 }

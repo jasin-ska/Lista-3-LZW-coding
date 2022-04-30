@@ -25,8 +25,7 @@ public class Decoder {
                 combined.add(seq.get(0));
                 dictionary.addSequence(combined);
                 BitsIO.outputSeq(combined);
-            }
-            else {
+            } else {
                 seq = dictionary.getSequenceAt(idx);
                 BitsIO.outputSeq(seq);
                 List<Byte> combined = new ArrayList<>(dictionary.getSequenceAt(oldIdx).size() + 1);

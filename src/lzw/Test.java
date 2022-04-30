@@ -23,7 +23,7 @@ public class Test {
     }
 
     public static void main(String[] args) throws IOException {
-        if(args.length < 1) {
+        if (args.length < 1) {
             System.out.println("Usage: java Test [fileName] (coding)");
             return;
         }
@@ -31,18 +31,16 @@ public class Test {
 
         String fileNameExt = args[0];
         String fileName = args[0].substring(0, fileNameExt.indexOf('.'));
-        String ext = args[0].substring(fileNameExt.indexOf('.')+1);
+        String ext = args[0].substring(fileNameExt.indexOf('.') + 1);
 
-        if(args.length == 2) {
-            if(!Objects.equals(args[1], "all")) {
+        if (args.length == 2) {
+            if (!Objects.equals(args[1], "all")) {
                 BitsIO.setCode(args[1]);
                 testFile(fileName, ext, args[1].charAt(0));
-            }
-            else {
+            } else {
                 allCodesTest(fileName, ext);
             }
-        }
-        else testFile(fileName, ext, 'o');
+        } else testFile(fileName, ext, 'o');
     }
 
     static void allCodesTest(String fileName, String ext) throws IOException {
@@ -99,7 +97,7 @@ public class Test {
 
         float entropyBefore = Entropy.calculateEntropy(filePath);
         float entropyCoded = Entropy.calculateEntropy(codedFilePath);
-        float CompressionRate = (float)sizeBefore/sizeCoded;
+        float CompressionRate = (float) sizeBefore / sizeCoded;
 
 
         System.out.println("STATS ---------");
@@ -108,10 +106,10 @@ public class Test {
         System.out.println("\tSize: " + sizeBefore + "  -->  " + sizeCoded);
         System.out.println("\t(size decoded: " + sizeDecoded + ")");
         System.out.println("TIME ------------");
-        System.out.println("\tCompression: " + encodingTime/1000f + " s");
-        System.out.println("\tDecompression: " + decodingTime/1000f + " s");
+        System.out.println("\tCompression: " + encodingTime / 1000f + " s");
+        System.out.println("\tDecompression: " + decodingTime / 1000f + " s");
 
-        System.out.println(isDecodedEqual(name, ext, code)? "ORIGINAL = DECODED" : "DECODING ERROR");
+        System.out.println(isDecodedEqual(name, ext, code) ? "ORIGINAL = DECODED" : "DECODING ERROR");
     }
 
 
